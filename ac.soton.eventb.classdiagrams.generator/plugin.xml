@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="ac.soton.eventb.emf.diagrams.generator"
+         point="ac.soton.eventb.emf.diagrams.generator.rule">
+      <generator
+            generatorID="ac.soton.eventb.classdiagrams.generator"
+            name="Classdiagram Generator"
+            root_source_class="Classdiagram"
+            sourcePackage="http://soton.ac.uk/models/eventb/classdiagrams">
+         <rule
+               name="ClassRule"
+               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassRule"
+               source_class="Class">
+         </rule>
+         <rule
+               name="AssociationRule"
+               rule_class="ac.soton.eventb.classdiagrams.generator.rules.AssociationRule"
+               source_class="Association">
+         </rule>
+         <rule
+               name="ClassAttributeRule"
+               rule_class="ac.soton.eventb.classdiagrams.generator.rules.ClassAttributeRule"
+               source_class="ClassAttribute">
+         </rule>
+      </generator>
+   </extension>
+   <extension
+         point="ac.soton.eventb.emf.diagrams.validator">
+      <validator
+            editorClass="ac.soton.eventb.classdiagrams.diagram.part.ClassdiagramsDiagramEditor"
+            name="Classdiagram diagram validator"
+            validatorClass="ac.soton.eventb.classdiagrams.generator.validator.Validator">
+      </validator>
+   </extension>
+
+</plugin>

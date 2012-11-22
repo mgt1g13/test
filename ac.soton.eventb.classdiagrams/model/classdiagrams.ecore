@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="classdiagrams"
+    nsURI="http://soton.ac.uk/models/eventb/classdiagrams" nsPrefix="classdiagrams">
+  <eClassifiers xsi:type="ecore:EClass" name="ClassdiagramOwner" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classdiagrams" upperBound="-1"
+        eType="#//Classdiagram" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Classdiagram" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamedCommentedElement ../../org.eventb.emf.core/model/eventbcore.ecore#//AbstractExtension ../../ac.soton.eventb.emf.diagrams/model/diagrams.ecore#//Diagram">
+    <eAnnotations source="org.eventb.emf.core.extendedMetaClasses" references="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
+        eType="#//Class" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classAssociations" upperBound="-1"
+        eType="#//Association" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refines" eType="#//Classdiagram"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Association" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamedCommentedElement #//ElaborativeElement #//AssociativeElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="isAsociationTypeRight"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Class" eOpposite="#//Class/incoming"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Class" eOpposite="#//Class/outgoing"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassAttribute" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamedCommentedElement #//ElaborativeElement #//AssociativeElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamedCommentedElement #//ElaborativeElement">
+    <eAnnotations source="org.eventb.emf.core.extendedMetaClasses" references="../../org.eventb.emf.core/model/eventbcore.ecore#//context/Constant ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Variable ../../org.eventb.emf.core/model/eventbcore.ecore#//context/CarrierSet"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supertypes" upperBound="-1"
+        eType="#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="classAttributes" upperBound="-1"
+        eType="#//ClassAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
+        eType="#//Association" eOpposite="#//Association/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//Association" eOpposite="#//Association/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refines" eType="#//Class">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+        <details key="constraints" value="parentIsNotConstant"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classType" eType="#//ClassType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElaborativeElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elaborates" eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//EventBNamed"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ClassType">
+    <eLiterals name="SET" literal="Carrier set"/>
+    <eLiterals name="CONSTANT" value="1" literal="Constant"/>
+    <eLiterals name="VARIABLE" value="2" literal="Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssociationType">
+    <eLiterals name="CONSTANT" literal="Constant"/>
+    <eLiterals name="VARIABLE" value="1" literal="Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssociativeElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="surjective" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="injective" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functional" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AssociationType" eType="#//AssociationType"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+</ecore:EPackage>
