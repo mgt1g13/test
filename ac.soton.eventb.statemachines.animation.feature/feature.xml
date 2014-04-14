@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="ac.soton.eventb.statemachines.animation.feature"
+      label="%featureName"
+      version="2.0.0"
+      provider-name="%providerName"
+      plugin="ac.soton.iumlb.branding">
+
+   <description url="http://www.example.com/description">
+      %description
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates/site.xml"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.5.0" match="compatible"/>
+      <import plugin="org.eventb.core" version="2.3.0" match="compatible"/>
+      <import feature="ac.soton.eventb.statemachines.feature" version="2.0.0" match="compatible"/>
+      <import feature="de.prob2.feature" version="2.3.5.201211271439" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="ac.soton.eventb.statemachines.animation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
