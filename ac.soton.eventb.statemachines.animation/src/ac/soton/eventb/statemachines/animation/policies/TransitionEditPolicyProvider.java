@@ -57,6 +57,8 @@ public class TransitionEditPolicyProvider implements IEditPolicyProvider {
 						&& transition.getOperations() != null 
 						&& !transition.getOperations().isEmpty()) {
 					
+					getHost().getViewer().deselectAll(); 	//deselect the transition ready for next interaction
+					
 					List<Operation> enabledOperations = animator.getCurrentState().getEnabledOperations();
 					List<Operation> operations = new ArrayList<Operation>();
 					EList<Event> events = transition.getElaborates();
